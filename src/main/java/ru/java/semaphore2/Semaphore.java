@@ -13,7 +13,7 @@ public class Semaphore {
     float amountMinute;
     float amountMinuteNormal;
 
-    private String semaphoreColor;
+    String semaphoreColor;
     private static final String GREETING_MESSAGE1 = "Первые 2 минуты горит зеленый цвет светофора, затем 3 минуты - " +
             "желтый, затем 5 минут - красный";
     private static final String GREETING_MESSAGE2 = "Введите количество минут, и программа рассчитает цвет светофора" +
@@ -25,7 +25,7 @@ public class Semaphore {
         ConsoleHelper.writeInConsoleWithBl(GREETING_MESSAGE2);
         amountMinuteInit();
         calculateAmountMinuteNormal();
-        semaphoreColor = calculateSemaphoreColor();
+        calculateSemaphoreColor();
         ConsoleHelper.writeInConsoleWithBl("В минуту " + amountMinute + " горит " + semaphoreColor + " цвет");
 
         Util.closeQuietly(reader);
@@ -62,17 +62,15 @@ public class Semaphore {
         amountMinuteNormal = amountMinuteNormal % 10;
     }
 
-    String calculateSemaphoreColor() {
-        if (amountMinuteNormal >= 0.0f && amountMinuteNormal < 2.00f) {
+    void calculateSemaphoreColor() {
+        if (amountMinuteNormal < 2.00f) {
             semaphoreColor = "зеленый";
         }
-        else if (amountMinuteNormal >= 2.00f && amountMinuteNormal < 5.00f) {
+        else if (amountMinuteNormal < 5.00f) {
             semaphoreColor = "желтый";
         }
         else  {
             semaphoreColor = "красный";
         }
-
-        return semaphoreColor;
     }
 }

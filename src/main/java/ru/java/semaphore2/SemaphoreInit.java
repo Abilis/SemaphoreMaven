@@ -17,13 +17,8 @@ package ru.java.semaphore2;
  */
 public class SemaphoreInit {
 
-
     public static void main(String[] args) {
-
         Semaphore semaphore = new Semaphore();
         semaphore.init();
-
-
-
     }
 }
