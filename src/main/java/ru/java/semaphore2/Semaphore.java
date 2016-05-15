@@ -1,14 +1,69 @@
 package ru.java.semaphore2;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Created by Admin on 15.05.2016.
  */
 public class Semaphore {
 
-    BufferedReader reader;
+    private BufferedReader reader;
+    float amountMinute;
+    float amountMinuteNormal;
+
+
+
+    private String semaphoreColor;
+    private static final String GREETING_MESSAGE1 = "Первые 2 минуты горит зеленый цвет светофора, затем 3 минуты - " +
+            "желтый, затем 5 минут - красный";
+    private static final String GREETING_MESSAGE2 = "Введите количество минут, и программа рассчитает цвет светофора" +
+            " на этот момент. Можно вводить дробные значения";
 
     public void init() {
+        bufferedReaderInit();
+        ConsoleHelper.writeInConsoleWithBl(GREETING_MESSAGE1);
+        ConsoleHelper.writeInConsoleWithBl(GREETING_MESSAGE2);
+        amountMinuteInit();
+        calculateAmountMinuteNormal();
+        semaphoreColor = calculateSemaphoreColor();
+        ConsoleHelper.writeInConsoleWithBl("В минуту " + amountMinute + " горит " + semaphoreColor + " цвет");
+
+        Util.closeQuietly(reader);
+    }
+
+
+    private void bufferedReaderInit() {
+        reader = new BufferedReader(new InputStreamReader(System.in));
+    }
+
+    private void amountMinuteInit() {
+
+        while (true) {
+            try {
+                String strAmountMinute = reader.readLine();
+                amountMinute = Float.parseFloat(strAmountMinute);
+                if (amountMinute < 1.0f) {
+                    throw new IOException("Количество минут не может быть меньше 1!");
+                }
+                return;
+            } catch (IOException e1) {
+                ConsoleHelper.writeInConsoleWithBl("Ошибка ввода: " + e1.getMessage());
+            } catch (NumberFormatException e2) {
+                ConsoleHelper.writeInConsoleWithBl("Не удалось распознать число. Попробуйте еще раз");
+            }
+        }
+    }
+
+    /**
+     * Метод рассчитывает прошедшее нормированное число минут, т.е. все события повторяются с периодичностью в 10 минут
+     */
+    void calculateAmountMinuteNormal() {
+        throw new UnsupportedOperationException();
+    }
+
+    String calculateSemaphoreColor() {
+        throw new UnsupportedOperationException();
     }
 }

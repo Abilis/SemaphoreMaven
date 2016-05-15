@@ -8,6 +8,11 @@ import java.io.IOException;
  */
 public class Util {
 
+    /**     *
+     * @param resourse
+     *
+     * Метод пытается закрыть ресурс. Если не удается - исключение игнорируется.
+     */
     public static void closeQuietly(Closeable resourse) {
         if (resourse != null) {
             try {
