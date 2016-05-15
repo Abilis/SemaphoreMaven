@@ -13,8 +13,6 @@ public class Semaphore {
     float amountMinute;
     float amountMinuteNormal;
 
-
-
     private String semaphoreColor;
     private static final String GREETING_MESSAGE1 = "Первые 2 минуты горит зеленый цвет светофора, затем 3 минуты - " +
             "желтый, затем 5 минут - красный";
@@ -57,13 +55,24 @@ public class Semaphore {
     }
 
     /**
-     * Метод рассчитывает прошедшее нормированное число минут, т.е. все события повторяются с периодичностью в 10 минут
+     * Метод рассчитывает прошедшее нормированное число минут, т.к. все события повторяются с периодичностью в 10 минут
      */
     void calculateAmountMinuteNormal() {
-        throw new UnsupportedOperationException();
+        amountMinuteNormal = amountMinute - 1;  //вычитаем 1, т.к. удобнее оперировать интервалом [0; 10)
+        amountMinuteNormal = amountMinuteNormal % 10;
     }
 
     String calculateSemaphoreColor() {
-        throw new UnsupportedOperationException();
+        if (amountMinuteNormal >= 0.0f && amountMinuteNormal < 2.00f) {
+            semaphoreColor = "зеленый";
+        }
+        else if (amountMinuteNormal >= 2.00f && amountMinuteNormal < 5.00f) {
+            semaphoreColor = "желтый";
+        }
+        else  {
+            semaphoreColor = "красный";
+        }
+
+        return semaphoreColor;
     }
 }
