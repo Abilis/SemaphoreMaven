@@ -4,12 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Admin on 15.05.2016.
- */
 public class Semaphore {
 
     private BufferedReader reader;
+
     float amountMinute;
     float amountMinuteNormal;
 
@@ -27,10 +25,8 @@ public class Semaphore {
         calculateAmountMinuteNormal();
         calculateSemaphoreColor();
         ConsoleHelper.writeInConsoleWithBl("В минуту " + amountMinute + " горит " + semaphoreColor + " цвет");
-
         Util.closeQuietly(reader);
     }
-
 
     private void bufferedReaderInit() {
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -65,11 +61,9 @@ public class Semaphore {
     void calculateSemaphoreColor() {
         if (amountMinuteNormal < 2.00f) {
             semaphoreColor = "зеленый";
-        }
-        else if (amountMinuteNormal < 5.00f) {
+        } else if (amountMinuteNormal < 5.00f) {
             semaphoreColor = "желтый";
-        }
-        else  {
+        } else {
             semaphoreColor = "красный";
         }
     }

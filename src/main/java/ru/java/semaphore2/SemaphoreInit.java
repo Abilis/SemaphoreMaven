@@ -1,8 +1,6 @@
 package ru.java.semaphore2;
 
 /**
- * Created by Admin on 15.05.2016.
- *
  * Первые 2 минуты горит зеленый цвет, затем 3 минуты - желтый, затем 5 минут - красный.
  *
  * Таким образом,
@@ -21,4 +19,5 @@ public class SemaphoreInit {
         Semaphore semaphore = new Semaphore();
         semaphore.init();
     }
+
 }
